@@ -28,9 +28,9 @@ module ActionDispatch::Routing
 
       controller_class_name = [scope_frame[:module], controller_name].compact.join("/").underscore
 
-      match "#{controller_name}/wsdl"   => "#{controller_name}#_generate_wsdl", :via => :get, :format => false,
+      match "#{controller_name.to_s.camelize}/wsdl"   => "#{controller_name}#_generate_wsdl", :via => :get, :format => false,
         :as => "#{controller_class_name}_wsdl"
-      match "#{controller_name}/action" => WashOut::Router.new(controller_class_name), :via => [:get, :post],
+      match "#{controller_name.to_s.camelize}/action" => WashOut::Router.new(controller_class_name), :via => [:get, :post],
         :defaults => { :controller => controller_class_name, :action => 'soap' }, :format => false,
         :as => "#{controller_class_name}_soap"
     end
