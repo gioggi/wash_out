@@ -8,6 +8,7 @@ module WashOut
     attr_accessor :value
     attr_accessor :source_class
     attr_accessor :soap_config
+    attr_accessor :optional
 
     # Defines a WSDL parameter with name +name+ and type specifier +type+.
     # The type specifier format is described in #parse_def.
